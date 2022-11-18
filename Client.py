@@ -25,10 +25,14 @@ while not running:
     while server_sending:
         server_message = s.recv(1024)
         server_message = server_message.decode("utf-8")
-        if server_message == "end":
-            server_sending = False
+        if server_message == "Choose a move: ":
+            #server_sending = False
+            print(server_message)
+            
+            s.send(client_message.encode("utf-8"))
         else:
             print(server_message)
+        
         
     
     client_message = input("Client: ")
