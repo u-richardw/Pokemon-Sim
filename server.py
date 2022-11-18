@@ -88,6 +88,10 @@ class Pokemon:
             cs.send(f"Go {self.name}!".encode("utf-8"))
             for i, x in enumerate(self.moves):
                 cs.send(f'\n{i+1}. {x}'.encode("utf-8"))
+            cs.send(f"\nChoose a move: ".encode("utf-8"))
+            
+
+            move = int(cs.recv(1024).decode("utf-8"))
             index = int(input('Pick a move: '))
             delay_print(f"\n{self.name} used {self.moves[index-1]}!")
             time.sleep(1)
